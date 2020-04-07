@@ -1,0 +1,75 @@
+<api:script xmlns:api="http://apiscript.com/ns?v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- See Column Definitions to specify column behavior and use XPaths to extract column values from JSON. -->
+  <api:info title="json" desc="Generated schema file." xmlns:other="http://apiscript.com/ns?v1">
+    <!-- You can modify the name, type, and column size here. -->
+    <attr name="id"                                 xs:type="integer"  readonly="false"              other:xPath="/json/id"                                 />
+<!--
+    <attr name="num"                                xs:type="string"   readonly="false"              other:xPath="/json/num"                                />
+    <attr name="customer_name"                      xs:type="string"   readonly="false"              other:xPath="/json/customer_name"                      />
+    <attr name="status"                             xs:type="string"   readonly="false"              other:xPath="/json/status"                             />
+    <attr name="total_amount"                       xs:type="double"   readonly="false"              other:xPath="/json/total_amount"                       />
+    <attr name="delivery_date"                      xs:type="date"     readonly="false"              other:xPath="/json/delivery_date"                      />
+    <attr name="estimated_delivery_date"            xs:type="date"     readonly="false"              other:xPath="/json/estimated_delivery_date"            />
+    <attr name="created_at"                         xs:type="datetime" readonly="false"              other:xPath="/json/created_at"                         />
+-->
+    <attr name="updated_at"                         xs:type="datetime" readonly="false"              other:xPath="/json/updated_at"                         />
+    <attr name="inventory_id"                       xs:type="integer"  readonly="false"              other:xPath="/json/deliveries/inventory_id"            />
+    <attr name="title"                              xs:type="string"   readonly="false"              other:xPath="/json/deliveries/title"                   />
+    <attr name="quantity"                           xs:type="double"   readonly="false"              other:xPath="/json/deliveries/quantity"                />
+    <attr name="unit"                               xs:type="integer"  readonly="false"              other:xPath="/json/deliveries/unit"                    />
+    <attr name="unit_price"                         xs:type="double"   readonly="false"              other:xPath="/json/deliveries/unit_price"              />
+    <attr name="deliveries_status"                  xs:type="string"   readonly="false"              other:xPath="/json/deliveries/status"                  />
+    <attr name="deliveries_delivery_date"           xs:type="date"     readonly="false"              other:xPath="/json/deliveries/delivery_date"           />
+    <attr name="deliveries_estimated_delivery_date" xs:type="date"     readonly="false"              other:xPath="/json/deliveries/estimated_delivery_date" />
+    <attr name="etc"                                xs:type="unknown"  readonly="false"              other:xPath="/json/deliveries/etc"                     />
+  </api:info>
+
+  <api:set attr="JSONPath" value="$.;$.deliveries" />
+
+  <api:set attr="DataModel" value="FLATTENEDDOCUMENTS" />
+
+  <api:set attr="ContentType" value="application/json"/>
+  <api:set attr="header:name" value="Authorization"/>
+  <api:set attr="header:value" value="Bearer [_connection.APIToken]"/>
+
+  <api:set attr="enablepaging" value="true"/>
+  <api:set attr="page" value="[rows@next | def('1')]"/>
+  <api:set attr="URI" value="https://web.zaico.co.jp/api/v1/packing_slips?page=[page]" />
+
+  <!-- The GET method corresponds to SELECT. Here you can override the default processing of the SELECT statement. The results of processing are pushed to the schema's output. See SELECT Execution for more information. -->
+  <api:script method="GET">
+    <api:call op="jsonproviderGet">
+      <api:set attr="rows@next" value="[page | add(1)]"/>
+      <api:push/>
+    </api:call>
+  </api:script>
+
+  <!-- To add support for INSERTS please see the INSERT Execution page within the help for further information and examples. -->
+  <api:script method="POST">
+    <api:set attr="method" value="POST"/>
+    <api:call op="jsonproviderGet">
+      <api:throw code="500" desc="Inserts are not currently supported."/>
+      <api:push/>
+    </api:call>
+  </api:script>
+
+  <!-- To add support for UPDATES please see the UPDATE Execution page within the help for further information and examples. -->
+  <api:script method="MERGE">
+    <api:set attr="method" value="PUT"/>
+    <api:call op="jsonproviderGet">
+      <api:throw code="500" desc="Updates are not currently supported."/>
+      <api:push/>
+    </api:call>
+  </api:script>
+
+  <!-- To add support for DELETES please see the DELETE Execution page within the help for further information and examples. -->
+  <api:script method="DELETE">
+    <api:set attr="method" value="DELETE"/>
+    <api:call op="jsonproviderGet">
+      <api:throw code="500" desc="Deletes are not currently supported."/>
+      <api:push/>
+    </api:call>
+  </api:script>
+
+</api:script>
