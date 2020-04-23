@@ -17,7 +17,7 @@
     <attr name="inventory_id"                       xs:type="integer"  readonly="false"              other:xPath="/json/deliveries/inventory_id"            />
     <attr name="title"                              xs:type="string"   readonly="false"              other:xPath="/json/deliveries/title"                   />
     <attr name="quantity"                           xs:type="double"   readonly="false"              other:xPath="/json/deliveries/quantity"                />
-    <attr name="unit"                               xs:type="integer"  readonly="false"              other:xPath="/json/deliveries/unit"                    />
+    <attr name="unit"                               xs:type="string"  readonly="false"              other:xPath="/json/deliveries/unit"                    />
     <attr name="unit_price"                         xs:type="double"   readonly="false"              other:xPath="/json/deliveries/unit_price"              />
     <attr name="deliveries_status"                  xs:type="string"   readonly="false"              other:xPath="/json/deliveries/status"                  />
     <attr name="deliveries_delivery_date"           xs:type="date"     readonly="false"              other:xPath="/json/deliveries/delivery_date"           />
