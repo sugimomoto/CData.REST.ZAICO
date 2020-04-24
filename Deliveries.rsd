@@ -3,7 +3,7 @@
   <!-- See Column Definitions to specify column behavior and use XPaths to extract column values from JSON. -->
   <api:info title="json" desc="Generated schema file." xmlns:other="http://apiscript.com/ns?v1">
     <!-- You can modify the name, type, and column size here. -->
-    <attr name="id"                                 xs:type="integer"  readonly="false"              other:xPath="/json/id"                                 />
+    <attr name="packing_slip_id"                                 xs:type="integer"  readonly="false"              other:xPath="/json/id"                                 />
 <!--
     <attr name="num"                                xs:type="string"   readonly="false"              other:xPath="/json/num"                                />
     <attr name="customer_name"                      xs:type="string"   readonly="false"              other:xPath="/json/customer_name"                      />

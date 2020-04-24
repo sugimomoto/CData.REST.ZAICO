@@ -19,8 +19,8 @@
     <attr name="updated_at"       xs:type="datetime" readonly="false"              other:xPath="/json/updated_at"       />
     <attr name="user_group"       xs:type="string"   readonly="false"              other:xPath="/json/user_group"       />
     <attr name="optional_attributes"                                 xs:type="string"   readonly="false"              other:xPath="/json/optional_attributes"                                 />
-    <attr name="quantity_management_attributes.order_point_quantity" xs:type="double"   readonly="false"              other:xPath="/json/quantity_management_attributes/order_point_quantity" />
-    <attr name="stocktake_attributes.checked_at"                     xs:type="datetime" readonly="false"              other:xPath="/json/stocktake_attributes/checked_at"                     />
+    <attr name="quantity_management_order_point_quantity" xs:type="double"   readonly="false"              other:xPath="/json/quantity_management_attributes/order_point_quantity" />
+    <attr name="stocktake_checked_at"                     xs:type="datetime" readonly="false"              other:xPath="/json/stocktake_attributes/checked_at"                     />
   </api:info>
 
   <api:set attr="DataModel" value="DOCUMENT" />
